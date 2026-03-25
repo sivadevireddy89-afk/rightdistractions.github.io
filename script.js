@@ -5,7 +5,7 @@ const galleryData = [
         title: "Mountain Sunrise",
         category: "scenery",
         description: "A breathtaking view of mountains bathed in golden morning light.",
-        image: "![Image](https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43.jpeg)?fit=crop"
+        image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43.jpeg?fit=crop"
     },
     {
         id: 2,
