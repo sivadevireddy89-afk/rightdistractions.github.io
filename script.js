@@ -26,7 +26,7 @@ const galleryData = [
         title: "Coastal Sunset",
         category: "scenery",
         description: "Vibrant colors of the setting sun over ocean waves.",
-        image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(2).jpeg"
+        image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(3).jpeg"
     },
     {
         id: 5,
