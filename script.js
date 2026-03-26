@@ -75,7 +75,7 @@ const galleryData = [
         title: "Paris Street Cafe",
         category: "location",
         description: "The quintessential Parisian dining experience.",
-        image: "https://github.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(1).jpeg"
+        image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(1).jpeg"
     },
     {
         id: 12,
