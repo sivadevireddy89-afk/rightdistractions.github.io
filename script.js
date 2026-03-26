@@ -2,30 +2,30 @@
 const galleryData = [
     {
         id: 1,
-        title: "Mountain Sunrise",
+        title: "Ride into Sunset",
         category: "scenery",
-        description: "A breathtaking view of mountains bathed in golden morning light.",
+        description: "A breathtaking view of sea in golden evening light.",
         image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43.jpeg"
     },
     {
         id: 2,
         title: "City Skyline", 
         category: "location",
-        description: "Urban architecture capturing the essence of modern city life.",
+        description: "London - Tower Bridge capturing the essence of modern city life.",
         image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(1).jpeg"
     },
     {
         id: 3,
-        title: "Elderly Gentleman",
+        title: "Clock Tower",
         category: "portrait", 
-        description: "A character study capturing wisdom and life experience.",
+        description: "Time captured in a wonderful evening.",
         image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(2).jpeg"
     },
     {
         id: 4,
-        title: "Coastal Sunset",
-        category: "scenery",
-        description: "Vibrant colors of the setting sun over ocean waves.",
+        title: "Bridie ",
+        category: "portrait",
+        description: "Vibrant colors of the setting brid.",
         image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(3).jpeg"
     },
     {
@@ -39,7 +39,7 @@ const galleryData = [
         id: 6,
         title: "Young Artist",
         category: "portrait",
-        description: "Capturing the creative spirit and dreams of youth.",
+        description: "Capturing the creative spirit and dreams of sky.",
         image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(4).jpeg"
     },
     {
@@ -61,7 +61,7 @@ const galleryData = [
         title: "Mother and Child",
         category: "portrait",
         description: "The timeless bond between mother and child.",
-        image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.44.jpeg"
+        image: "https://images.unsplash.com/photo-1573496359142-b3d406da852c?w=800&h=600&fit=crop"
     },
     {
         id: 10,
@@ -75,7 +75,7 @@ const galleryData = [
         title: "Paris Street Cafe",
         category: "location",
         description: "The quintessential Parisian dining experience.",
-        image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(1).jpeg"
+        image: "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=800&h=600&fit=crop"
     },
     {
         id: 12,
