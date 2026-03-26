@@ -12,14 +12,14 @@ const galleryData = [
         title: "City Skyline", 
         category: "location",
         description: "Urban architecture capturing the essence of modern city life.",
-        image: "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=800&h=600&fit=crop"
+        image: "https://github.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(1).jpeg"
     },
     {
         id: 3,
         title: "Elderly Gentleman",
         category: "portrait", 
         description: "A character study capturing wisdom and life experience.",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop"
+        image: "https://github.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%2.jpeg"
     },
     {
         id: 4,
