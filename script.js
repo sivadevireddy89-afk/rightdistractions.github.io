@@ -19,7 +19,7 @@ const galleryData = [
         title: "Elderly Gentleman",
         category: "portrait", 
         description: "A character study capturing wisdom and life experience.",
-        image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%2.jpeg"
+        image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(2).jpeg"
     },
     {
         id: 4,
