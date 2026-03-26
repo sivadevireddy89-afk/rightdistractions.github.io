@@ -12,56 +12,56 @@ const galleryData = [
         title: "City Skyline", 
         category: "location",
         description: "Urban architecture capturing the essence of modern city life.",
-        image: "https://github.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(1).jpeg"
+        image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(1).jpeg"
     },
     {
         id: 3,
         title: "Elderly Gentleman",
         category: "portrait", 
         description: "A character study capturing wisdom and life experience.",
-        image: "https://github.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%2.jpeg"
+        image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%2.jpeg"
     },
     {
         id: 4,
         title: "Coastal Sunset",
         category: "scenery",
         description: "Vibrant colors of the setting sun over ocean waves.",
-        image: "https://github.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(2).jpeg"
+        image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(2).jpeg"
     },
     {
         id: 5,
         title: "Historic Town Square",
         category: "location",
         description: "Charming European town square with centuries of history.",
-        image: "https://github.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(3).jpeg"
+        image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(3).jpeg"
     },
     {
         id: 6,
         title: "Young Artist",
         category: "portrait",
         description: "Capturing the creative spirit and dreams of youth.",
-        image: "https://github.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(4).jpeg"
+        image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(4).jpeg"
     },
     {
         id: 7,
         title: "Forest Path",
         category: "scenery",
         description: "A mystical journey through an ancient woodland.",
-        image: "https://github.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(5).jpeg"
+        image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(5).jpeg"
     },
     {
         id: 8,
         title: "Venice Canals",
         category: "location",
         description: "Romantic waterways of the floating city.",
-        image: "https://github.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.44%20(1).jpeg"
+        image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.44%20(1).jpeg"
     },
     {
         id: 9,
         title: "Mother and Child",
         category: "portrait",
         description: "The timeless bond between mother and child.",
-        image: "https://github.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.44.jpeg"
+        image: "https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.44.jpeg"
     },
     {
         id: 10,
