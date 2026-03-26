@@ -26,42 +26,42 @@ const galleryData = [
         title: "Coastal Sunset",
         category: "scenery",
         description: "Vibrant colors of the setting sun over ocean waves.",
-        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=600&fit=crop"
+        image: "https://github.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(2).jpeg"
     },
     {
         id: 5,
         title: "Historic Town Square",
         category: "location",
         description: "Charming European town square with centuries of history.",
-        image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800&h=600&fit=crop"
+        image: "https://github.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(3).jpeg"
     },
     {
         id: 6,
         title: "Young Artist",
         category: "portrait",
         description: "Capturing the creative spirit and dreams of youth.",
-        image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=600&fit=crop"
+        image: "https://github.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(4).jpeg"
     },
     {
         id: 7,
         title: "Forest Path",
         category: "scenery",
         description: "A mystical journey through an ancient woodland.",
-        image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop"
+        image: "https://github.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(5).jpeg"
     },
     {
         id: 8,
         title: "Venice Canals",
         category: "location",
         description: "Romantic waterways of the floating city.",
-        image: "https://images.unsplash.com/photo-1555212697-194d092e3b8f?w=800&h=600&fit=crop"
+        image: "https://github.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.44%20(1).jpeg"
     },
     {
         id: 9,
         title: "Mother and Child",
         category: "portrait",
         description: "The timeless bond between mother and child.",
-        image: "https://images.unsplash.com/photo-1573496359142-b3d406da852c?w=800&h=600&fit=crop"
+        image: "https://github.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.44.jpeg"
     },
     {
         id: 10,
@@ -75,7 +75,7 @@ const galleryData = [
         title: "Paris Street Cafe",
         category: "location",
         description: "The quintessential Parisian dining experience.",
-        image: "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=800&h=600&fit=crop"
+        image: "https://github.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(1).jpeg"
     },
     {
         id: 12,
