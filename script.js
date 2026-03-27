@@ -289,12 +289,6 @@ function setupScrollEffects() {
         const currentScrollY = window.scrollY;
         const header = document.querySelector('.header');
         
-        // Header hide/show on scroll
-        if (currentScrollY > lastScrollY && currentScrollY > 100) {
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            header.style.transform = 'translateY(0)';
-        }
         
         // Header background opacity
         if (currentScrollY > 50) {
