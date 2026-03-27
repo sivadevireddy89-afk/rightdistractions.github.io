@@ -25,11 +25,25 @@
     <meta property="twitter:description" content="Fine art paintings capturing sceneries, locations, and portraits. Commission custom artwork or browse our gallery.">
     <meta property="twitter:image" content="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200&h=630&fit=crop">
     
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#1a1a1a">
+     <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+
+    <!-- Performance: Preconnect to external domains -->
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://lottie.host">
+    <link rel="preconnect" href="https://raw.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
+    
+    <!-- Performance: Preload critical resources -->
+    <link rel="preload" href="styles.css" as="style">
     
     <title>Right Distractions — Fine Art Paintings</title>
     <link rel="stylesheet" href="styles.css">
+
+     <!-- Performance: Async script loading -->
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header class="header">
