@@ -364,6 +364,7 @@ function setupIntersectionObserver() {
 document.addEventListener('DOMContentLoaded', () => {
     initGallery();
     setupIntersectionObserver();
+    setRandomHeroBackground();
 });
 
 // Add loading animation
