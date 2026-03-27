@@ -58,10 +58,10 @@ const galleryData = [
     },
     {
         id: 9,
-        title: "Mother and Child",
+        title: "Coastal Sunset",
         category: "portrait",
-        description: "The timeless bond between mother and child.",
-        image: "https://images.unsplash.com/photo-1573496359142-b3d406da852c?w=800&h=600&fit=crop"
+        description: "Vibrant colors of the setting sun over ocean waves.",
+        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=600&fit=crop"
     },
     {
         id: 10,
