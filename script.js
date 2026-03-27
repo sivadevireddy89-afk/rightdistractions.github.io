@@ -98,6 +98,25 @@ const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 
+// Array of hero background images that load randomly on refresh
+const heroBackgrounds = [
+    'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1920&h=1080&fit=crop',
+    'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1920&h=1080&fit=crop',
+    'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=1920&h=1080&fit=crop',
+    'https://images.unsplash.com/photo-1549490349-8643362247b5?w=1920&h=1080&fit=crop',
+    'https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=1920&h=1080&fit=crop'
+];
+
+// Set random hero background on page load
+function setRandomHeroBackground() {
+    const randomIndex = Math.floor(Math.random() * heroBackgrounds.length);
+    const selectedImage = heroBackgrounds[randomIndex];
+    
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        hero.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('${selectedImage}')`;
+    }
+}
 // Initialize gallery
 function initGallery() {
     renderGallery('all');
