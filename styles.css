@@ -1324,4 +1324,243 @@ a, button, .gallery-item, .filter-btn, .cta-button {
     z-index: 998;
     opacity: 0.6;
 }
+/* Visual Journey - Animated Slider Section */
+.visual-journey-slider {
+    padding: 80px 0 0;
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, #000 100%);
+}
+
+.slider-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0 22px;
+}
+
+.slider-section-title {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+}
+
+.slider-section-subtitle {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Animated Slider - Webflow Style */
+.visual-journey-slider .animated-slider {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    min-height: 500px;
+    overflow: hidden;
+    background: #000;
+}
+
+.visual-journey-slider .slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.visual-journey-slider .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+    z-index: 1;
+}
+
+.visual-journey-slider .slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+.visual-journey-slider .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.1);
+    transition: transform 6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.visual-journey-slider .slide.active img {
+    transform: scale(1);
+}
+
+.visual-journey-slider .slide-content {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    z-index: 3;
+    max-width: 800px;
+    padding: 0 40px;
+}
+
+.visual-journey-slider .slide-title {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 56px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+}
+
+.visual-journey-slider .slide.active .slide-title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.visual-journey-slider .slide-subtitle {
+    font-size: 21px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: rgba(255, 255, 255, 0.85);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.5s, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
+}
+
+.visual-journey-slider .slide.active .slide-subtitle {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Slider Controls */
+.visual-journey-slider .slider-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.visual-journey-slider .slider-arrow {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: all;
+}
+
+.visual-journey-slider .slider-arrow:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.1);
+}
+
+.visual-journey-slider .slider-arrow svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Slider Dots */
+.visual-journey-slider .slider-dots {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.visual-journey-slider .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0;
+}
+
+.visual-journey-slider .dot:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.visual-journey-slider .dot.active {
+    background: white;
+    transform: scale(1.3);
+}
+
+/* Slider Progress Bar */
+.visual-journey-slider .slider-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 10;
+}
+
+.visual-journey-slider .progress-fill {
+    height: 100%;
+    background: white;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+/* Mobile Responsive for Visual Journey Slider */
+@media (max-width: 768px) {
+    .visual-journey-slider .animated-slider {
+        height: 60vh;
+        min-height: 400px;
+    }
+    
+    .visual-journey-slider .slide-title {
+        font-size: 32px;
+    }
+    
+    .visual-journey-slider .slide-subtitle {
+        font-size: 16px;
+    }
+    
+    .visual-journey-slider .slide-content {
+        bottom: 60px;
+        padding: 0 20px;
+    }
+    
+    .visual-journey-slider .slider-controls {
+        padding: 0 20px;
+    }
+    
+    .visual-journey-slider .slider-arrow {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .slider-section-title {
+        font-size: 36px;
+    }
+}
 
