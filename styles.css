@@ -695,6 +695,105 @@ h3 {
     box-shadow: var(--shadow-medium);
 }
 
+.whatsapp-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.whatsapp-card {
+    background: var(--bg-primary);
+    padding: 40px;
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.whatsapp-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    color: white;
+}
+
+.whatsapp-icon svg {
+    width: 40px;
+    height: 40px;
+}
+
+.whatsapp-card h3 {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 24px;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    font-weight: 400;
+}
+
+.whatsapp-card p {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    padding: 16px 32px;
+    border-radius: var(--radius-medium);
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    transition: all var(--transition-fast);
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    background: linear-gradient(135deg, #22c35e 0%, #107a6e 100%);
+}
+
+.whatsapp-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #25D366;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
 /* Instagram Section */
 .instagram-section {
     padding: 120px 0;
