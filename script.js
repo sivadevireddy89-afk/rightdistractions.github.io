@@ -407,6 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupIntersectionObserver();
     setRandomHeroBackground();
     // setupScrollingBrush();
+    setupAnimatedSlider();
 });
 
 // Add loading animation
