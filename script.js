@@ -413,7 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initGallery();
     setupIntersectionObserver();
     setRandomHeroBackground();
-    setupScrollingBrush();
+    // setupScrollingBrush();
 });
 
 // Add loading animation
