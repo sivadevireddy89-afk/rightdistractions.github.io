@@ -289,7 +289,6 @@ function setupScrollEffects() {
         const currentScrollY = window.scrollY;
         const header = document.querySelector('.header');
         
-        
         // Header background opacity
         if (currentScrollY > 50) {
             header.style.background = 'rgba(251, 251, 253, 0.95)';
