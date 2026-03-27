@@ -117,6 +117,54 @@ function setRandomHeroBackground() {
         hero.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('${selectedImage}')`;
     }
 }
+// Setup scrolling brush animation
+function setupScrollingBrush() {
+    const brush = document.getElementById('scrollBrush');
+    if (!brush) return;
+    
+    let lastScrollPercent = 0;
+    
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = scrollTop / docHeight;
+        
+        // Move brush from left (-100px) to right (100vw + 100px) based on scroll
+        const startPos = -100;
+        const endPos = window.innerWidth + 100;
+        const currentPos = startPos + (scrollPercent * (endPos - startPos));
+        
+        // Add some vertical wave motion
+        const waveOffset = Math.sin(scrollPercent * Math.PI * 4) * 30;
+        const baseY = window.innerHeight / 2;
+        
+        brush.style.transform = `translate(${currentPos}px, ${baseY + waveOffset - window.innerHeight/2}px)`;
+        
+        // Create paint stroke trail occasionally
+        if (Math.abs(scrollPercent - lastScrollPercent) > 0.02) {
+            createPaintStroke(currentPos, baseY + waveOffset);
+            lastScrollPercent = scrollPercent;
+        }
+    });
+}
+
+// Create paint stroke trail
+function createPaintStroke(x, y) {
+    const stroke = document.createElement('div');
+    stroke.className = 'paint-stroke';
+    stroke.style.left = `${x - 50}px`;
+    stroke.style.top = `${y + 35}px`;
+    stroke.style.width = '100px';
+    document.body.appendChild(stroke);
+    
+    // Fade out and remove
+    setTimeout(() => {
+        stroke.style.transition = 'opacity 1s ease-out';
+        stroke.style.opacity = '0';
+        setTimeout(() => stroke.remove(), 1000);
+    }, 100);
+}
+
 // Initialize gallery
 function initGallery() {
     renderGallery('all');
