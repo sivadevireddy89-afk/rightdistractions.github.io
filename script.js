@@ -273,25 +273,8 @@ function closeModalFunc() {
     }, 400);
 }
 
-// Handle contact form submission
-function handleFormSubmit(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(e.target);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const message = formData.get('message');
-    
-    // Simple validation
-    if (!name || !email || !message) {
-        showNotification('Please fill in all fields', 'error');
-        return;
-    }
-    
-    // Simulate form submission
-    showNotification('Thank you for your message! I will get back to you soon.', 'success');
-    e.target.reset();
-}
+
+
 
 // Show notification with smooth animation
 function showNotification(message, type) {
