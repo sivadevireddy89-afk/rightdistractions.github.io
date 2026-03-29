@@ -578,6 +578,358 @@
     </aside>
 
     <script src="script.js"></script>
+<!-- Multi-Language Support -->
+    <script>
+        const translations = {
+            en: {
+                nav: {
+                    home: "Home",
+                    gallery: "Gallery",
+                    forsale: "For Sale",
+                    about: "About",
+                    testimonials: "Testimonials",
+                    contact: "Contact"
+                },
+                hero: {
+                    title: "Fine Art Paintings",
+                    subtitle: "Capturing the beauty of sceneries, locations, and portraits through artistic expression",
+                    cta: "View Gallery"
+                },
+                gallery: {
+                    title: "Gallery",
+                    filterAll: "All Works",
+                    filterScenery: "Sceneries",
+                    filterLocation: "Locations",
+                    filterPortrait: "Portraits"
+                },
+                forsale: {
+                    title: "For Sale Ready",
+                    subtitle: "Original artwork available for purchase",
+                    available: "Available",
+                    sold: "Sold",
+                    inquire: "Inquire Now",
+                    pricePrefix: "£"
+                },
+                about: {
+                    title: "About the Artist",
+                    paintings: "Paintings",
+                    exhibitions: "Exhibitions",
+                    experience: "Years Experience"
+                },
+                testimonials: {
+                    title: "Client Testimonials",
+                    subtitle: "What clients have to say about my work"
+                },
+                contact: {
+                    title: "Get in Touch",
+                    description: "Interested in purchasing artwork or commissioning a piece? I'd love to hear from you.",
+                    email: "Email:",
+                    phone: "Phone:",
+                    studio: "Studio:",
+                    studioValue: "Available by appointment",
+                    whatsappTitle: "Chat on WhatsApp",
+                    whatsappDesc: "Get instant replies to your questions about commissions, prints, or artwork!",
+                    whatsappBtn: "💬 Message Me",
+                    whatsappStatus: "Usually replies within an hour"
+                },
+                instagram: {
+                    title: "Follow on Instagram",
+                    description: "Discover more of my artwork and behind-the-scenes content on Instagram. Follow @rightdistractions for daily inspiration and updates on new paintings.",
+                    button: "📷 Follow @rightdistractions"
+                },
+                footer: {
+                    copyright: "© 2024 Right Distractions. All rights reserved."
+                }
+            },
+            es: {
+                nav: {
+                    home: "Inicio",
+                    gallery: "Galería",
+                    forsale: "En Venta",
+                    about: "Acerca de",
+                    testimonials: "Testimonios",
+                    contact: "Contacto"
+                },
+                hero: {
+                    title: "Pinturas de Bellas Artes",
+                    subtitle: "Capturando la belleza de paisajes, lugares y retratos a través de la expresión artística",
+                    cta: "Ver Galería"
+                },
+                gallery: {
+                    title: "Galería",
+                    filterAll: "Todas las Obras",
+                    filterScenery: "Paisajes",
+                    filterLocation: "Lugares",
+                    filterPortrait: "Retratos"
+                },
+                forsale: {
+                    title: "Disponible para Venta",
+                    subtitle: "Obras de arte originales disponibles para comprar",
+                    available: "Disponible",
+                    sold: "Vendido",
+                    inquire: "Consultar Ahora",
+                    pricePrefix: "£"
+                },
+                about: {
+                    title: "Sobre el Artista",
+                    paintings: "Pinturas",
+                    exhibitions: "Exposiciones",
+                    experience: "Años de Experiencia"
+                },
+                testimonials: {
+                    title: "Testimonios de Clientes",
+                    subtitle: "Lo que los clientes dicen sobre mi trabajo"
+                },
+                contact: {
+                    title: "Ponte en Contacto",
+                    description: "¿Interesado en comprar obras de arte o encargar una pieza? Me encantaría saber de ti.",
+                    email: "Correo:",
+                    phone: "Teléfono:",
+                    studio: "Estudio:",
+                    studioValue: "Disponible con cita previa",
+                    whatsappTitle: "Chatear en WhatsApp",
+                    whatsappDesc: "¡Obtén respuestas instantáneas a tus preguntas sobre comisiones, impresiones o obras de arte!",
+                    whatsappBtn: "💬 Envíame un Mensaje",
+                    whatsappStatus: "Suele responder en una hora"
+                },
+                instagram: {
+                    title: "Sígueme en Instagram",
+                    description: "Descubre más de mi arte y contenido detrás de cámaras en Instagram. Sigue a @rightdistractions para inspiración diaria y actualizaciones.",
+                    button: "📷 Seguir @rightdistractions"
+                },
+                footer: {
+                    copyright: "© 2024 Right Distractions. Todos los derechos reservados."
+                }
+            },
+            fr: {
+                nav: {
+                    home: "Accueil",
+                    gallery: "Galerie",
+                    forsale: "À Vendre",
+                    about: "À Propos",
+                    testimonials: "Témoignages",
+                    contact: "Contact"
+                },
+                hero: {
+                    title: "Peintures des Beaux-Arts",
+                    subtitle: "Capturer la beauté des paysages, des lieux et des portraits à travers l'expression artistique",
+                    cta: "Voir la Galerie"
+                },
+                gallery: {
+                    title: "Galerie",
+                    filterAll: "Toutes les Œuvres",
+                    filterScenery: "Paysages",
+                    filterLocation: "Lieux",
+                    filterPortrait: "Portraits"
+                },
+                forsale: {
+                    title: "Prêt à Vendre",
+                    subtitle: "Œuvres d'art originales disponibles à l'achat",
+                    available: "Disponible",
+                    sold: "Vendu",
+                    inquire: "Renseigner Maintenant",
+                    pricePrefix: "£"
+                },
+                about: {
+                    title: "À Propos de l'Artiste",
+                    paintings: "Peintures",
+                    exhibitions: "Expositions",
+                    experience: "Années d'Expérience"
+                },
+                testimonials: {
+                    title: "Témoignages Clients",
+                    subtitle: "Ce que les clients disent de mon travail"
+                },
+                contact: {
+                    title: "Prenez Contact",
+                    description: "Intéressé par l'achat d'œuvres d'art ou la commande d'une pièce? J'aimerais avoir de vos nouvelles.",
+                    email: "Email:",
+                    phone: "Téléphone:",
+                    studio: "Atelier:",
+                    studioValue: "Sur rendez-vous",
+                    whatsappTitle: "Discuter sur WhatsApp",
+                    whatsappDesc: "Obtenez des réponses instantanées à vos questions sur les commissions, impressions ou œuvres d'art!",
+                    whatsappBtn: "💬 M'Envoyer un Message",
+                    whatsappStatus: "Répond généralement en une heure"
+                },
+                instagram: {
+                    title: "Suivez sur Instagram",
+                    description: "Découvrez plus de mon art et du contenu en coulisses sur Instagram. Suivez @rightdistractions pour l'inspiration quotidienne.",
+                    button: "📷 Suivre @rightdistractions"
+                },
+                footer: {
+                    copyright: "© 2024 Right Distractions. Tous droits réservés."
+                }
+            },
+            de: {
+                nav: {
+                    home: "Startseite",
+                    gallery: "Galerie",
+                    forsale: "Zu Verkaufen",
+                    about: "Über",
+                    testimonials: "Kundenbewertungen",
+                    contact: "Kontakt"
+                },
+                hero: {
+                    title: "Kunstmalereien",
+                    subtitle: "Einfangen der Schönheit von Landschaften, Orten und Porträts durch künstlerischen Ausdruck",
+                    cta: "Galerie ansehen"
+                },
+                gallery: {
+                    title: "Galerie",
+                    filterAll: "Alle Werke",
+                    filterScenery: "Landschaften",
+                    filterLocation: "Orte",
+                    filterPortrait: "Porträts"
+                },
+                forsale: {
+                    title: "Zum Verkauf Bereit",
+                    subtitle: "Original-Kunstwerke zum Kauf verfügbar",
+                    available: "Verfügbar",
+                    sold: "Verkauft",
+                    inquire: "Jetzt Anfragen",
+                    pricePrefix: "£"
+                },
+                about: {
+                    title: "Über den Künstler",
+                    paintings: "Gemälde",
+                    exhibitions: "Ausstellungen",
+                    experience: "Jahre Erfahrung"
+                },
+                testimonials: {
+                    title: "Kundenbewertungen",
+                    subtitle: "Was Kunden über meine Arbeit sagen"
+                },
+                contact: {
+                    title: "Kontakt aufnehmen",
+                    description: "Interessiert am Kauf von Kunstwerken oder an einer Auftragsarbeit? Ich würde mich freuen, von Ihnen zu hören.",
+                    email: "E-Mail:",
+                    phone: "Telefon:",
+                    studio: "Atelier:",
+                    studioValue: "Nach Vereinbarung",
+                    whatsappTitle: "Auf WhatsApp Chatten",
+                    whatsappDesc: "Erhalten Sie sofortige Antworten auf Ihre Fragen zu Aufträgen, Drucken oder Kunstwerken!",
+                    whatsappBtn: "💬 Nachricht senden",
+                    whatsappStatus: "Antwortet normalerweise innerhalb einer Stunde"
+                },
+                instagram: {
+                    title: "Folgen Sie auf Instagram",
+                    description: "Entdecken Sie mehr von meiner Kunst und Hintergrund-Inhalten auf Instagram. Folgen Sie @rightdistractions für tägliche Inspiration.",
+                    button: "📷 Folgen @rightdistractions"
+                },
+                footer: {
+                    copyright: "© 2024 Right Distractions. Alle Rechte vorbehalten."
+                }
+            },
+            kn: {
+                nav: {
+                    home: "ಮುಖಪುಟ",
+                    gallery: "ಗ್ಯಾಲರಿ",
+                    forsale: "ಮಾರಾಟಕ್ಕೆ",
+                    about: "ಕಲಾವಿದರ ಬಗ್ಗೆ",
+                    testimonials: "ಪ್ರಶಂಸಾಪತ್ರಗಳು",
+                    contact: "ಸಂಪರ್ಕ"
+                },
+                hero: {
+                    title: "ಸುಂದರ ಕಲೆ ಚಿತ್ರಗಳು",
+                    subtitle: "ಕಲಾತ್ಮಕ ಅಭಿವ್ಯಕ್ತಿಯ ಮೂಲಕ ಪ್ರಕೃತಿ ದೃಶ್ಯಗಳು, ಸ್ಥಳಗಳು ಮತ್ತು ಛಾಯಾಚಿತ್ರಗಳ ಸೌಂದರ್ಯವನ್ನು ಹಿಡಿದಿಡುವುದು",
+                    cta: "ಗ್ಯಾಲರಿ ವೀಕ್ಷಿಸಿ"
+                },
+                gallery: {
+                    title: "ಗ್ಯಾಲರಿ",
+                    filterAll: "ಎಲ್ಲಾ ಕೃತಿಗಳು",
+                    filterScenery: "ಪ್ರಕೃತಿ ದೃಶ್ಯಗಳು",
+                    filterLocation: "ಸ್ಥಳಗಳು",
+                    filterPortrait: "ಛಾಯಾಚಿತ್ರಗಳು"
+                },
+                forsale: {
+                    title: "ಮಾರಾಟಕ್ಕೆ ಸಿದ್ಧ",
+                    subtitle: "ಖರೀದಿಗೆ ಲಭ್ಯವಿರುವ ಮೂಲ ಕಲೆ ಕೃತಿಗಳು",
+                    available: "ಲಭ್ಯವಿದೆ",
+                    sold: "ಮಾರಾಟವಾಯಿತು",
+                    inquire: "ಈಗ ವಿಚಾರಿಸಿ",
+                    pricePrefix: "£"
+                },
+                about: {
+                    title: "ಕಲಾವಿದರ ಬಗ್ಗೆ",
+                    paintings: "ಚಿತ್ರಗಳು",
+                    exhibitions: "ಪ್ರದರ್ಶನಗಳು",
+                    experience: "ವರ್ಷಗಳ ಅನುಭವ"
+                },
+                testimonials: {
+                    title: "ಗ್ರಾಹಕರ ಪ್ರಶಂಸಾಪತ್ರಗಳು",
+                    subtitle: "ನನ್ನ ಕೆಲಸದ ಬಗ್ಗೆ ಗ್ರಾಹಕರು ಏನು ಹೇಳುತ್ತಾರೆ"
+                },
+                contact: {
+                    title: "ಸಂಪರ್ಕಿಸಿ",
+                    description: "ಕಲೆ ಕೃತಿಗಳನ್ನು ಖರೀದಿಸಲು ಅಥವಾ ಆಯೋಗಿಸಲು ಆಸಕ್ತಿ ಇದೆಯೇ? ನಿಮ್ಮಿಂದ ಕೇಳಲು ನಾನು ಬಯಸುತ್ತೇನೆ.",
+                    email: "ಇಮೇಲ್:",
+                    phone: "ದೂರವಾಣಿ:",
+                    studio: "ಸ್ಟುಡಿಯೋ:",
+                    studioValue: "ನೇಮಕಾತಿ ಮೂಲಕ ಲಭ್ಯ",
+                    whatsappTitle: "ವಾಟ್ಸಾಪ್‌ನಲ್ಲಿ ಚಾಟ್ ಮಾಡಿ",
+                    whatsappDesc: "ಆಯೋಗಗಳು, ಮುದ್ರಣಗಳು ಅಥವಾ ಕಲೆ ಕೃತಿಗಳ ಬಗ್ಗೆ ನಿಮ್ಮ ಪ್ರಶ್ನೆಗಳಿಗೆ ತಕ್ಷಣದ ಉತ್ತರಗಳನ್ನು ಪಡೆಯಿರಿ!",
+                    whatsappBtn: "💬 ಸಂದೇಶ ಕಳುಹಿಸಿ",
+                    whatsappStatus: "ಸಾಮಾನ್ಯವಾಗಿ ಒಂದು ಗಂಟೆಯಲ್ಲಿ ಉತ್ತರಿಸುತ್ತಾರೆ"
+                },
+                instagram: {
+                    title: "ಇನ್‌ಸ್ಟಾಗ್ರಾಮ್‌ನಲ್ಲಿ ಅನುಸರಿಸಿ",
+                    description: "ಇನ್‌ಸ್ಟಾಗ್ರಾಮ್‌ನಲ್ಲಿ ನನ್ನ ಕಲೆ ಮತ್ತು ಹಿಂದೆ-ದೃಶ್ಯ ವಿಷಯದನ್ನು ಹೆಚ್ಚು ಕಂಡುಹಿಡಿಯಿರಿ. ದೈನಂದಿನ ಸ್ಫೂರ್ತಿ ಮತ್ತು ನವೀನ ಪೇಂಟಿಂಗ್‌ಗಳ ನವೀಕರಣಗಳಿಗಾಗಿ @rightdistractions ಅನ್ನು ಅನುಸರಿಸಿ.",
+                    button: "📷 ಅನುಸರಿಸಿ @rightdistractions"
+                },
+                footer: {
+                    copyright: "© 2024 ರೈಟ್ ಡಿಸ್ಟ್ರಾಕ್ಷನ್ಸ್. ಎಲ್ಲಾ ಹಕ್ಕುಗಳು ಕಾಪಾಡಲ್ಪಟ್ಟವು."
+                }
+            }
+        };
+
+        // i18n functionality
+        const i18n = {
+            currentLang: localStorage.getItem('lang') || 'en',
+            
+            init() {
+                this.setLanguage(this.currentLang);
+                document.getElementById('languageSelect').value = this.currentLang;
+                
+                document.getElementById('languageSelect').addEventListener('change', (e) => {
+                    this.setLanguage(e.target.value);
+                });
+            },
+            
+            setLanguage(lang) {
+                this.currentLang = lang;
+                localStorage.setItem('lang', lang);
+                this.updateContent();
+            },
+            
+            updateContent() {
+                const t = translations[this.currentLang];
+                if (!t) return;
+                
+                // Update all elements with data-i18n attribute
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    const keys = key.split('.');
+                    let value = t;
+                    
+                    for (const k of keys) {
+                        value = value?.[k];
+                    }
+                    
+                    if (value) {
+                        el.textContent = value;
+                    }
+                });
+            }
+        };
+
+        // Initialize on DOM ready
+        document.addEventListener('DOMContentLoaded', () => {
+            i18n.init();
+        });
+        </script>
+        
+    
 </body>
 </html>
 
