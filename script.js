@@ -302,15 +302,16 @@ function setupScrollEffects() {
     });
 }
 
-// Open modal with smooth animation
+// Open modal with smooth animation - supports both images and videos
 function openModal(item) {
     modal.style.display = 'block';
     modal.style.opacity = '0';
     modal.style.transform = 'scale(0.9)';
     
-    modalImage.style.backgroundImage = `url('${item.image}')`;
-    modalImage.style.backgroundSize = 'cover';
-    modalImage.style.backgroundPosition = 'center';
+    // Clear previous content
+    modalMedia.innerHTML = '';
+    modalMedia.style.backgroundImage = '';
+    
     modalTitle.textContent = item.title;
     modalDescription.textContent = item.description;
     
@@ -319,9 +320,108 @@ function openModal(item) {
         modal.style.transition = 'opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
         modal.style.opacity = '1';
         modal.style.transform = 'scale(1)';
+        
+        // Load content after modal animation completes
+        setTimeout(() => {
+            loadModalContent(item);
+        }, 400);
     }, 10);
     
     document.body.style.overflow = 'hidden';
+}
+
+// Load content into modal (images or videos)
+function loadModalContent(item) {
+    modalMedia.innerHTML = '';
+    modalMedia.style.backgroundImage = '';
+    
+    // Check if item has a video
+    if (item.video) {
+        // Check if it's an Instagram URL
+        if (item.video.includes('instagram.com')) {
+            // Create Instagram embed
+            const embedContainer = document.createElement('div');
+            embedContainer.style.width = '100%';
+            embedContainer.style.height = '100%';
+            embedContainer.style.display = 'flex';
+            embedContainer.style.alignItems = 'center';
+            embedContainer.style.justifyContent = 'center';
+            
+            const iframe = document.createElement('iframe');
+            iframe.src = item.video.replace('/p/', '/p/embed/') + 'embed/';
+            iframe.width = '400';
+            iframe.height = '600';
+            iframe.style.border = 'none';
+            iframe.style.borderRadius = '8px';
+            iframe.allowFullscreen = true;
+            
+            embedContainer.appendChild(iframe);
+            modalMedia.appendChild(embedContainer);
+        } else if (item.video.includes('youtube.com') || item.video.includes('youtu.be')) {
+            // Create YouTube embed
+            const embedContainer = document.createElement('div');
+            embedContainer.style.width = '100%';
+            embedContainer.style.height = '100%';
+            embedContainer.style.minHeight = '400px';
+            embedContainer.style.display = 'flex';
+            embedContainer.style.alignItems = 'center';
+            embedContainer.style.justifyContent = 'center';
+            
+            // Extract video ID from various YouTube URL formats
+            let videoId = '';
+            console.log('Processing video URL:', item.video);
+            if (item.video.includes('youtube.com/shorts/')) {
+                videoId = item.video.split('youtube.com/shorts/')[1].split('?')[0];
+            } else if (item.video.includes('youtube.com/watch')) {
+                const urlParams = new URLSearchParams(item.video.split('?')[1]);
+                videoId = urlParams.get('v');
+            } else if (item.video.includes('youtu.be/')) {
+                videoId = item.video.split('youtu.be/')[1].split('?')[0];
+            }
+            console.log('Extracted video ID:', videoId);
+            
+            if (videoId) {
+                console.log('Creating YouTube embed for ID:', videoId);
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&rel=0`;
+                iframe.width = '560';
+                iframe.height = '315';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.minHeight = '400px';
+                iframe.style.border = 'none';
+                iframe.style.borderRadius = '8px';
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('allowfullscreen', '');
+                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+                iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+                iframe.title = item.title || 'YouTube video player';
+                
+                embedContainer.appendChild(iframe);
+                modalMedia.appendChild(embedContainer);
+                console.log('YouTube iframe added to modal');
+            } else {
+                console.error('Failed to extract video ID from URL:', item.video);
+            }
+        } else {
+            // Regular video file
+            const video = document.createElement('video');
+            video.src = item.video;
+            video.controls = true;
+            video.autoplay = true;
+            video.style.width = '100%';
+            video.style.height = '100%';
+            video.style.objectFit = 'contain';
+            video.style.borderRadius = '8px';
+            modalMedia.appendChild(video);
+        }
+    } else {
+        // Show image
+        modalMedia.style.backgroundImage = `url('${item.image}')`;
+        modalMedia.style.backgroundSize = 'contain';
+        modalMedia.style.backgroundPosition = 'center';
+        modalMedia.style.backgroundRepeat = 'no-repeat';
+    }
 }
 
 // Close modal with smooth animation
@@ -329,12 +429,20 @@ function closeModalFunc() {
     modal.style.opacity = '0';
     modal.style.transform = 'scale(0.9)';
     
+    // Stop any playing video
+    const video = modalMedia.querySelector('video');
+    if (video) {
+        video.pause();
+        video.src = '';
+    }
+    
     setTimeout(() => {
         modal.style.display = 'none';
+        modalMedia.innerHTML = '';
+        modalMedia.style.backgroundImage = '';
         document.body.style.overflow = 'auto';
     }, 400);
 }
-
 
 
 
