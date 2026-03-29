@@ -1826,24 +1826,27 @@ a, button, .gallery-item, .filter-btn, .cta-button {
 
 .buy-btn {
     padding: 12px 24px;
-    background: linear-gradient(135deg, var(--accent-gold), var(--accent-warm));
+    background: var(--accent-color);
     color: white;
     border: none;
     border-radius: var(--radius-medium);
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 500;
     cursor: pointer;
     transition: all var(--transition-fast);
     box-shadow: var(--shadow-light);
+    letter-spacing: -0.01em;
 }
 
 .buy-btn:hover {
+    background: #0077ed;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 113, 227, 0.25);
 }
 
 .buy-btn:disabled {
-    background: #9CA3AF;
+    background: #d2d2d7;
+    color: #86868b;
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
@@ -1876,6 +1879,8 @@ a, button, .gallery-item, .filter-btn, .cta-button {
     .buy-btn {
         padding: 10px 20px;
     }
+}
+
 }
 
 
