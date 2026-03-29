@@ -733,6 +733,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setRandomHeroBackground();
     // setupScrollingBrush();
     setupAnimatedSlider();
+    setupNavHighlighting();
 });
 
 // Add loading animation
