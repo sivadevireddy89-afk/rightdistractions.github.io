@@ -212,6 +212,52 @@ h3 {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Language Switcher */
+.language-switcher {
+    position: relative;
+}
+
+.language-switcher select {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-medium);
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    min-width: 100px;
+    transition: all var(--transition-fast);
+}
+
+.language-switcher select:hover {
+    border-color: #D4AF37;
+}
+
+.language-switcher select:focus {
+    outline: none;
+    border-color: #D4AF37;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+/* Mobile: hide language switcher, show in menu */
+@media (max-width: 768px) {
+    .language-switcher {
+        display: none;
+    }
+    
+    .nav-menu.active .language-switcher {
+        display: block;
+        margin-top: 20px;
+        padding: 0 20px;
+    }
+    
+    .nav-menu.active .language-switcher select {
+        width: 100%;
+    }
+}
 .hamburger span {
     width: 100%;
     height: 1px;
