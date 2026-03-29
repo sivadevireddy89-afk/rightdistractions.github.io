@@ -1691,4 +1691,191 @@ a, button, .gallery-item, .filter-btn, .cta-button {
         display: none;
     }
 }
+/* For Sale Ready - E-commerce Section */
+.for-sale-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+}
+
+.for-sale-section .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.for-sale-section .section-title {
+    font-size: 48px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-warm));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 16px;
+}
+
+.for-sale-section .section-subtitle {
+    font-size: 18px;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.artwork-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.artwork-card {
+    background: var(--bg-primary);
+    border-radius: var(--radius-large);
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-slow);
+    position: relative;
+}
+
+.artwork-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.artwork-image {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+}
+
+.artwork-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.artwork-card:hover .artwork-image img {
+    transform: scale(1.05);
+}
+
+.artwork-status {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.artwork-status.available {
+    background: #10B981;
+    color: white;
+}
+
+.artwork-status.sold {
+    background: #EF4444;
+    color: white;
+}
+
+.artwork-info {
+    padding: 24px;
+}
+
+.artwork-id {
+    display: block;
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.artwork-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.artwork-description {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.artwork-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.artwork-price {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent-gold);
+}
+
+.artwork-price.sold-price {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
+
+.buy-btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-warm));
+    color: white;
+    border: none;
+    border-radius: var(--radius-medium);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-light);
+}
+
+.buy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+}
+
+.buy-btn:disabled {
+    background: #9CA3AF;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Mobile Responsive for For Sale Section */
+@media (max-width: 768px) {
+    .for-sale-section .section-title {
+        font-size: 36px;
+    }
+    
+    .artwork-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 16px;
+    }
+    
+    .artwork-image {
+        height: 280px;
+    }
+    
+    .artwork-info {
+        padding: 20px;
+    }
+    
+    .artwork-price {
+        font-size: 24px;
+    }
+    
+    .buy-btn {
+        padding: 10px 20px;
+    }
+}
+
 
