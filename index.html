@@ -45,6 +45,16 @@
      <!-- Performance: Async script loading -->
     <script src="script.js" defer></script>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NQR70B5Y78"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NQR70B5Y78');
+</script>
+    
     <!-- Service Worker Registration for caching -->
     <script>
         if ('serviceWorker' in navigator) {
