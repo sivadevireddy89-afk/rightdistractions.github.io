@@ -95,10 +95,10 @@
         }
 
         .slide.prev-1 {
-            transform: translateX(-55vw) scale(0.65);
-            opacity: 0.4;
+            transform: translateX(-38vw) scale(0.78);
+            opacity: 0.65;
             z-index: 2;
-            filter: brightness(0.6);
+            filter: brightness(0.75);
         }
 
         .slide.active {
@@ -108,10 +108,10 @@
         }
 
         .slide.next-1 {
-            transform: translateX(55vw) scale(0.65);
-            opacity: 0.4;
+            transform: translateX(38vw) scale(0.78);
+            opacity: 0.65;
             z-index: 2;
-            filter: brightness(0.6);
+            filter: brightness(0.75);
         }
 
         .slide.next-2 {
@@ -397,11 +397,13 @@
 
             /* Mobile Coverflow - Smaller peek */
             .slide.prev-1 {
-                transform: translateX(-45vw) scale(0.55);
+                transform: translateX(-32vw) scale(0.7);
+                opacity: 0.55;
             }
 
             .slide.next-1 {
-                transform: translateX(45vw) scale(0.55);
+                transform: translateX(32vw) scale(0.7);
+                opacity: 0.55;
             }
 
             .slide.prev-2,
@@ -413,15 +415,134 @@
 
         @media (max-width: 480px) {
             .slide.prev-1 {
-                transform: translateX(-40vw) scale(0.5);
+                transform: translateX(-28vw) scale(0.65);
+                opacity: 0.5;
             }
 
             .slide.next-1 {
-                transform: translateX(40vw) scale(0.5);
+                transform: translateX(28vw) scale(0.65);
+                opacity: 0.5;
             }
 
             .work-title {
                 font-size: 20px;
+            }
+        }
+
+        /* Page Intro Animation */
+        .page-intro {
+            position: fixed;
+            inset: 0;
+            background: #0a0a0a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                        visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .page-intro.done {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .intro-content {
+            text-align: center;
+            animation: introFadeIn 0.6s ease forwards;
+        }
+
+        .intro-logo {
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: introSlideUp 0.8s ease 0.2s forwards;
+            background: rgba(255,255,255,0.08);
+            padding: 16px 24px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .intro-logo img {
+            height: 80px;
+            width: auto;
+            display: block;
+        }
+
+        .intro-title {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: #fff;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: introSlideUp 0.8s ease 0.4s forwards;
+        }
+
+        .intro-subtitle {
+            font-size: 14px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--accent, #D4AF37);
+            margin-top: 16px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: introSlideUp 0.8s ease 0.6s forwards;
+        }
+
+        .intro-line {
+            width: 60px;
+            height: 1px;
+            background: var(--accent, #D4AF37);
+            margin: 24px auto 0;
+            opacity: 0;
+            transform: scaleX(0);
+            animation: introLineGrow 0.8s ease 0.8s forwards;
+        }
+
+        @keyframes introFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes introSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes introLineGrow {
+            from {
+                opacity: 0;
+                transform: scaleX(0);
+            }
+            to {
+                opacity: 1;
+                transform: scaleX(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .intro-title {
+                font-size: 28px;
+                letter-spacing: 4px;
+            }
+
+            .intro-subtitle {
+                font-size: 12px;
+                letter-spacing: 3px;
+            }
+
+            .intro-logo img {
+                height: 60px;
             }
         }
     </style>
@@ -455,6 +576,18 @@
     </script>
 </head>
 <body>
+    <!-- Page Intro Animation -->
+    <div class="page-intro" id="pageIntro">
+        <div class="intro-content">
+            <div class="intro-logo">
+                <img src="Images/Logo.png" alt="Right Distractions">
+            </div>
+            <h1 class="intro-title">Right Distractions</h1>
+            <p class="intro-subtitle">Fine Art Paintings</p>
+            <div class="intro-line"></div>
+        </div>
+    </div>
+
     <header class="header">
         <nav class="nav">
             <div class="nav-brand">
@@ -1631,6 +1764,25 @@
 
         // Initialize
         initGallery();
+    })();
+    </script>
+
+    <!-- Page Intro Animation Script -->
+    <script>
+    (function() {
+        const intro = document.getElementById('pageIntro');
+        if (!intro) return;
+
+        // Fade out intro after content is ready
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                intro.classList.add('done');
+                // Remove from DOM after transition
+                setTimeout(function() {
+                    intro.remove();
+                }, 900);
+            }, 2200);
+        });
     })();
     </script>
 
