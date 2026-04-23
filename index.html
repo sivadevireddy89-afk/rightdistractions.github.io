@@ -1719,6 +1719,9 @@
                 return `
                     <div class="slide ${positionClass}" data-index="${index}" onclick="window.handleSlideClick(${index})">
                         <img class="slide-image" src="${item.image}" alt="${item.title}" loading="${index < 3 ? 'eager' : 'lazy'}">
+                        <a href="https://wa.me/?text=Hi, I'm interested in the artwork '${encodeURIComponent(item.title)}'. Can you provide more details?" target="_blank" class="enquire-btn" onclick="event.stopPropagation()">
+                            Enquire Now
+                        </a>
                     </div>
                 `;
             }).join('');
@@ -1879,11 +1882,30 @@
                         <div class="gallery-overlay-text">
                             <span>${item.category}</span>
                             <h3>${item.title}</h3>
+                            <a href="https://wa.me/?text=Hi, I'm interested in the artwork '${encodeURIComponent(item.title)}'. Can you provide more details?" target="_blank" class="enquire-btn">
+                                Enquire Now
+                            </a>
                         </div>
                     </div>
                 </div>
             `).join('');
-            
+
+            // Add click handlers to toggle overlay
+            gridGallery.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    // Don't toggle if clicking the enquire button
+                    if (e.target.closest('.enquire-btn')) return;
+
+                    // Remove active from all other items
+                    gridGallery.querySelectorAll('.gallery-item').forEach(other => {
+                        if (other !== item) other.classList.remove('active');
+                    });
+
+                    // Toggle active on clicked item
+                    item.classList.toggle('active');
+                });
+            });
+
             updateGridPagination();
         }
 
@@ -2202,7 +2224,6 @@
             <path d="M18 15l-6-6-6 6"/>
         </svg>
     </button>
-    
 </body>
 </html>
 
