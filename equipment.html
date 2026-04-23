@@ -40,22 +40,6 @@
     <title>My Artwork Equipment — Right Distractions</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        .equipment-page {
-            background-image: 
-                radial-gradient(circle at 25% 25%, rgba(120, 119, 198, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(255, 119, 198, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 50% 10%, rgba(119, 198, 255, 0.06) 0%, transparent 50%),
-                linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 70%);
-            background-position: 25% 25%, 75% 75%, 50% 10%, 0 0;
-            background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
-            background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
-            background-attachment: fixed, fixed, fixed, fixed;
-        }
-        
-        .equipment-page .container::before {
-            display: none;
-        }
-        
         /* Back to Top Button - Equipment Page */
         .back-to-top {
             opacity: 0;
@@ -105,23 +89,12 @@
                 </a>
             </div>
             <ul class="nav-menu">
-                <li><a href="index.html#home" class="nav-link" data-i18n="nav.home">Home</a></li>
-                <li><a href="index.html#gallery" class="nav-link" data-i18n="nav.gallery">Gallery</a></li>
-                <li><a href="index.html#about" class="nav-link" data-i18n="nav.about">About</a></li>
-                <li><a href="index.html#for-sale" class="nav-link" data-i18n="nav.forsale">For Sale</a></li>
-                <li><a href="index.html#testimonials" class="nav-link" data-i18n="nav.testimonials">Testimonials</a></li>
-                <li><a href="index.html#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
-                <li><a href="equipment.html" class="nav-link active" data-i18n="nav.equipment">Equipment</a></li>
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#virtual-room" class="nav-link">Virtual Room</a></li>
+                <li><a href="equipment.html" class="nav-link active">Equipment</a></li>
             </ul>
-            <div class="language-switcher">
-                <select id="languageSelect" aria-label="Select language">
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                    <option value="fr">Français</option>
-                    <option value="de">Deutsch</option>
-                    <option value="kn">ಕನ್ನಡ</option>
-                </select>
-            </div>
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -141,10 +114,10 @@
             </div>
         </section>
 
-        <!-- Painting Supplies Section -->
-        <section class="equipment-section">
+        <!-- Art Equipment Section -->
+        <section class="equipment-section additional-tools">
             <div class="container">
-                <h2 class="section-title" data-i18n="equipment.paintingSupplies">Painting Supplies</h2>
+                <h2 class="section-title">My Art Equipment</h2>
                 <div class="equipment-grid compact-grid">
                     <!-- Equipment Item 1 -->
                     <div class="equipment-card compact">
@@ -257,15 +230,7 @@
                             <a href="https://www.amazon.in/s?k=Artist+Sketchbook+A4+100+Sheets" target="_blank" class="equipment-buy-btn small" data-i18n="equipment.buyNow">Buy Now</a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Additional Tools Section -->
-        <section class="equipment-section additional-tools">
-            <div class="container">
-                <h2 class="section-title" data-i18n="equipment.additionalTools">Additional Tools</h2>
-                <div class="equipment-grid">
                     <!-- Tool Item 1 -->
                     <div class="equipment-card compact">
                         <div class="equipment-image">

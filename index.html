@@ -429,17 +429,16 @@
             }
         }
 
-        /* Page Intro Animation */
+        /* Page Intro Animation - 3D Marquee */
         .page-intro {
             position: fixed;
             inset: 0;
             background: #0a0a0a;
             display: flex;
-            align-items: center;
-            justify-content: center;
             z-index: 9999;
             transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
                         visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
         }
 
         .page-intro.done {
@@ -448,59 +447,176 @@
             pointer-events: none;
         }
 
-        .intro-content {
-            text-align: center;
-            animation: introFadeIn 0.6s ease forwards;
+        /* Left 75% - 3D Marquee */
+        .intro-marquee {
+            width: 75%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1200px;
+            overflow: hidden;
+            opacity: 0;
+            animation: introFadeIn 0.8s ease 0.1s forwards;
+        }
+
+        .marquee-3d-wrapper {
+            width: 600px;
+            height: 600px;
+            transform-style: preserve-3d;
+            transform: rotateX(55deg) rotateZ(45deg);
+            position: relative;
+        }
+
+        .marquee-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            transform-style: preserve-3d;
+            width: 100%;
+            height: 100%;
+        }
+
+        .marquee-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .marquee-column:nth-child(1) {
+            animation: marqueeUp 10s linear infinite;
+        }
+
+        .marquee-column:nth-child(2) {
+            animation: marqueeDown 14s linear infinite;
+        }
+
+        .marquee-column:nth-child(3) {
+            animation: marqueeUp 12s linear infinite;
+        }
+
+        .marquee-img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            flex-shrink: 0;
+        }
+
+        @keyframes marqueeUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+
+        @keyframes marqueeDown {
+            0% { transform: translateY(-50%); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Right 25% - Logo & Text */
+        .intro-brand {
+            width: 25%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            border-left: 1px solid rgba(255,255,255,0.06);
+            background: linear-gradient(180deg, rgba(212,175,55,0.02) 0%, transparent 50%);
         }
 
         .intro-logo {
-            margin-bottom: 24px;
+            margin-bottom: 32px;
             opacity: 0;
             transform: translateY(20px);
-            animation: introSlideUp 0.8s ease 0.2s forwards;
-            background: rgba(255,255,255,0.08);
-            padding: 16px 24px;
-            border-radius: 12px;
+            animation: introSlideUp 0.8s ease 0.4s forwards;
+            background: rgba(255,255,255,0.06);
+            padding: 20px 28px;
+            border-radius: 16px;
             display: inline-block;
         }
 
         .intro-logo img {
-            height: 80px;
+            height: 90px;
             width: auto;
             display: block;
         }
 
         .intro-title {
-            font-size: 48px;
+            font-size: 24px;
             font-weight: 300;
-            letter-spacing: 8px;
+            letter-spacing: 6px;
             text-transform: uppercase;
             color: #fff;
             margin: 0;
             opacity: 0;
             transform: translateY(30px);
-            animation: introSlideUp 0.8s ease 0.4s forwards;
-        }
-
-        .intro-subtitle {
-            font-size: 14px;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: var(--accent, #D4AF37);
-            margin-top: 16px;
-            opacity: 0;
-            transform: translateY(20px);
             animation: introSlideUp 0.8s ease 0.6s forwards;
         }
 
+        .intro-subtitle {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent, #D4AF37);
+            margin-top: 14px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: introSlideUp 0.8s ease 0.8s forwards;
+        }
+
         .intro-line {
-            width: 60px;
+            width: 40px;
             height: 1px;
             background: var(--accent, #D4AF37);
             margin: 24px auto 0;
             opacity: 0;
             transform: scaleX(0);
-            animation: introLineGrow 0.8s ease 0.8s forwards;
+            animation: introLineGrow 0.8s ease 1.0s forwards;
+        }
+
+        /* Rising Glow Animation */
+        .rising-glow {
+            position: relative;
+            width: 100%;
+            height: 100px;
+            margin-top: 32px;
+            overflow: hidden;
+            opacity: 0;
+            animation: introFadeIn 0.6s ease 1.2s forwards;
+        }
+
+        .rising-particle {
+            position: absolute;
+            bottom: 0;
+            border-radius: 50%;
+            background: var(--accent, #D4AF37);
+            box-shadow: 0 0 10px var(--accent, #D4AF37), 0 0 20px var(--accent, #D4AF37);
+            animation: riseUp 3s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes riseUp {
+            0% {
+                transform: translateY(0) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 1;
+                box-shadow: 0 0 15px var(--accent, #D4AF37), 0 0 30px var(--accent, #D4AF37), 0 0 45px rgba(212, 175, 55, 0.5);
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) scale(1.2);
+                opacity: 0;
+            }
         }
 
         @keyframes introFadeIn {
@@ -530,17 +646,22 @@
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
+            .intro-marquee {
+                display: none;
+            }
+            .intro-brand {
+                width: 100%;
+                border-left: none;
+            }
             .intro-title {
                 font-size: 28px;
                 letter-spacing: 4px;
             }
-
             .intro-subtitle {
                 font-size: 12px;
                 letter-spacing: 3px;
             }
-
             .intro-logo img {
                 height: 60px;
             }
@@ -576,15 +697,65 @@
     </script>
 </head>
 <body>
-    <!-- Page Intro Animation -->
+    <!-- Page Intro Animation - 3D Marquee + Brand -->
     <div class="page-intro" id="pageIntro">
-        <div class="intro-content">
+        <!-- Left 75%: 3D Marquee -->
+        <div class="intro-marquee">
+            <div class="marquee-3d-wrapper">
+                <div class="marquee-grid">
+                    <div class="marquee-column">
+                        <img class="marquee-img" src="https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43.jpeg" alt="Ride into Sunset">
+                        <img class="marquee-img" src="https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(1).jpeg" alt="City Skyline">
+                        <img class="marquee-img" src="https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(2).jpeg" alt="Clock Tower">
+                        <img class="marquee-img" src="https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43.jpeg" alt="Ride into Sunset">
+                        <img class="marquee-img" src="https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(1).jpeg" alt="City Skyline">
+                        <img class="marquee-img" src="https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(2).jpeg" alt="Clock Tower">
+                    </div>
+                    <div class="marquee-column">
+                        <img class="marquee-img" src="https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(3).jpeg" alt="Bridie">
+                        <img class="marquee-img" src="https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(4).jpeg" alt="Young Artist">
+                        <img class="marquee-img" src="https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(5).jpeg" alt="Forest Path">
+                        <img class="marquee-img" src="https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(3).jpeg" alt="Bridie">
+                        <img class="marquee-img" src="https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(4).jpeg" alt="Young Artist">
+                        <img class="marquee-img" src="https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(5).jpeg" alt="Forest Path">
+                    </div>
+                    <div class="marquee-column">
+                        <img class="marquee-img" src="https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.44%20(1).jpeg" alt="Venice Canals">
+                        <img class="marquee-img" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop" alt="Coastal Sunset">
+                        <img class="marquee-img" src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=400&h=300&fit=crop" alt="Desert Landscape">
+                        <img class="marquee-img" src="https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.44%20(1).jpeg" alt="Venice Canals">
+                        <img class="marquee-img" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop" alt="Coastal Sunset">
+                        <img class="marquee-img" src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=400&h=300&fit=crop" alt="Desert Landscape">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right 25%: Logo & Brand -->
+        <div class="intro-brand">
             <div class="intro-logo">
                 <img src="Images/Logo.png" alt="Right Distractions">
             </div>
-            <h1 class="intro-title">Right Distractions</h1>
+            <h1 class="intro-title">Right<br>Distractions</h1>
             <p class="intro-subtitle">Fine Art Paintings</p>
             <div class="intro-line"></div>
+
+            <!-- Rising Glow Animation -->
+            <div class="rising-glow">
+                <div class="rising-particle" style="left:5%;width:6px;height:6px;animation-delay:0s;animation-duration:3.2s"></div>
+                <div class="rising-particle" style="left:12%;width:4px;height:4px;animation-delay:0.4s;animation-duration:2.8s"></div>
+                <div class="rising-particle" style="left:20%;width:8px;height:8px;animation-delay:0.8s;animation-duration:3.5s"></div>
+                <div class="rising-particle" style="left:28%;width:5px;height:5px;animation-delay:1.2s;animation-duration:3s"></div>
+                <div class="rising-particle" style="left:35%;width:7px;height:7px;animation-delay:0.2s;animation-duration:3.8s"></div>
+                <div class="rising-particle" style="left:42%;width:4px;height:4px;animation-delay:0.6s;animation-duration:2.9s"></div>
+                <div class="rising-particle" style="left:50%;width:6px;height:6px;animation-delay:1.0s;animation-duration:3.3s"></div>
+                <div class="rising-particle" style="left:58%;width:5px;height:5px;animation-delay:1.4s;animation-duration:3.1s"></div>
+                <div class="rising-particle" style="left:65%;width:8px;height:8px;animation-delay:0.3s;animation-duration:3.6s"></div>
+                <div class="rising-particle" style="left:72%;width:4px;height:4px;animation-delay:0.7s;animation-duration:2.7s"></div>
+                <div class="rising-particle" style="left:80%;width:6px;height:6px;animation-delay:1.1s;animation-duration:3.4s"></div>
+                <div class="rising-particle" style="left:88%;width:5px;height:5px;animation-delay:0.5s;animation-duration:3s"></div>
+                <div class="rising-particle" style="left:95%;width:7px;height:7px;animation-delay:0.9s;animation-duration:3.7s"></div>
+            </div>
         </div>
     </div>
 
@@ -597,24 +768,12 @@
                 </a>
             </div>
             <ul class="nav-menu">
-                <li><a href="#home" class="nav-link" data-i18n="nav.home">Home</a></li>
-                <li><a href="#gallery" class="nav-link" data-i18n="nav.gallery">Gallery</a></li>
-                <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
-                <li><a href="#for-sale" class="nav-link" data-i18n="nav.forsale">For Sale</a></li>
-                <li><a href="#testimonials" class="nav-link" data-i18n="nav.testimonials">Testimonials</a></li>
-                <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#virtual-room" class="nav-link">Virtual Room</a></li>
                 <li><a href="equipment.html" class="nav-link">Equipment</a></li>
-                <li><a href="gallery-carousel.html" class="nav-link">Works</a></li>
             </ul>
-            <div class="language-switcher">
-                <select id="languageSelect" aria-label="Select language">
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                    <option value="fr">Français</option>
-                    <option value="de">Deutsch</option>
-                    <option value="kn">ಕನ್ನಡ</option>
-                </select>
-            </div>
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -624,352 +783,254 @@
     </header>
 
     <main>
-        <!-- Gallery Carousel Section -->
-        <section class="gallery-section" id="home">
-            <!-- Category Navigation -->
-            <nav class="category-nav">
-                <a href="#" class="category-link active" data-category="all">All Works</a>
-                <a href="#" class="category-link" data-category="scenery">Sceneries</a>
-                <a href="#" class="category-link" data-category="location">Locations</a>
-                <a href="#" class="category-link" data-category="portrait">Portraits</a>
-            </nav>
-
-            <!-- Main Carousel -->
-            <main class="carousel">
-                <div class="slides" id="slides">
-                    <!-- Slides populated by JavaScript -->
+        <!-- Elegant Hero Section -->
+        <section id="home">
+            <div class="hero-left">
+                <div class="hero-eyebrow">Fine Art Paintings</div>
+                <h1 class="hero-title">
+                    Where light<br>meets <em>canvas</em>
+                </h1>
+                <p class="hero-desc">
+                    Original paintings that capture the soul of landscapes, places, and people. Each work is handcrafted with traditional techniques and a modern eye for emotion and light.
+                </p>
+                <div class="hero-actions">
+                    <a href="#gallery" class="btn-primary">Explore Gallery</a>
+                    <a href="#about" class="btn-ghost">About the Artist →</a>
                 </div>
-
-                <!-- Work Info Overlay -->
-                <div class="work-info" id="workInfo">
-                    <div class="work-details">
-                        <span class="work-type" id="workType">scenery</span>
-                        <h2 class="work-title" id="workTitle">Ride into Sunset</h2>
-                        <span class="work-meta" id="workMeta">A breathtaking view of sea in golden evening light.</span>
+                <div class="hero-stats">
+                    <div>
+                        <div class="stat-num">50+</div>
+                        <div class="stat-label">Paintings</div>
                     </div>
-                    <div class="work-nav">
-                        <span class="work-counter"><span id="currentNum">01</span> / <span id="totalNum">12</span></span>
+                    <div>
+                        <div class="stat-num">10+</div>
+                        <div class="stat-label">Exhibitions</div>
+                    </div>
+                    <div>
+                        <div class="stat-num">5+</div>
+                        <div class="stat-label">Years</div>
                     </div>
                 </div>
-            </main>
-
-            <!-- Navigation Controls -->
-            <div class="nav-controls">
-                <button class="nav-btn" id="prevBtn" aria-label="Previous">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M19 12H5M5 12l7-7M5 12l7 7"/>
-                    </svg>
-                    <span>Prev</span>
-                </button>
-                <button class="nav-btn" id="nextBtn" aria-label="Next">
-                    <span>Next</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M5 12h14M19 12l-7-7M19 12l-7 7"/>
-                    </svg>
-                </button>
             </div>
-
-            <!-- View Project Button -->
-            <a href="#" class="view-project" id="viewProject">View Details</a>
+            <div class="hero-right">
+                <img class="hero-img" src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1000&fit=crop" alt="Featured painting — Golden Sunset" />
+                <div class="hero-img-caption">
+                    <p>Featured Work</p>
+                    <strong>Ride into Sunset</strong>
+                </div>
+            </div>
         </section>
 
-        <!-- Progress Line -->
-        <div class="progress-line" id="progressLine"></div>
-
-        <!-- Keyboard Hint -->
-        <div class="keyboard-hint">Use <strong>←</strong> <strong>→</strong> to navigate</div>
-
-        <section id="gallery" class="gallery-section" style="background: #fff; color: #0a0a0a;">
-            <div class="container">
-                <h2 class="section-title" data-i18n="gallery.title">Gallery</h2>
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all" data-i18n="gallery.filterAll">All Works</button>
-                    <button class="filter-btn" data-filter="scenery" data-i18n="gallery.filterScenery">Sceneries</button>
-                    <button class="filter-btn" data-filter="location" data-i18n="gallery.filterLocation">Locations</button>
-                    <button class="filter-btn" data-filter="portrait" data-i18n="gallery.filterPortrait">Portraits</button>
+        <!-- Gallery Section with View Toggle -->
+        <section id="gallery" class="gallery-section">
+            <div class="gallery-header">
+                <h2 class="section-title">Gallery</h2>
+                
+                <!-- View Toggle Buttons -->
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="carousel" aria-label="Carousel view">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <path d="M3 9h18M9 21V9"/>
+                        </svg>
+                        <span>Carousel</span>
+                    </button>
+                    <button class="view-btn" data-view="grid" aria-label="Grid view">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="7" height="7" rx="1"/>
+                            <rect x="14" y="3" width="7" height="7" rx="1"/>
+                            <rect x="3" y="14" width="7" height="7" rx="1"/>
+                            <rect x="14" y="14" width="7" height="7" rx="1"/>
+                        </svg>
+                        <span>Grid</span>
+                    </button>
                 </div>
-                <div class="gallery-grid">
+            </div>
+
+            <!-- Carousel View -->
+            <div class="carousel-view active" id="carouselView">
+                <!-- Category Navigation for Carousel -->
+                <nav class="category-nav">
+                    <a href="#" class="category-link active" data-category="all">All Works</a>
+                    <a href="#" class="category-link" data-category="scenery">Sceneries</a>
+                    <a href="#" class="category-link" data-category="location">Locations</a>
+                    <a href="#" class="category-link" data-category="portrait">Portraits</a>
+                </nav>
+
+                <main class="carousel">
+                    <div class="slides" id="slides">
+                        <!-- Slides populated by JavaScript -->
+                    </div>
+
+                    <!-- Work Info Overlay -->
+                    <div class="work-info" id="workInfo">
+                        <div class="work-details">
+                            <span class="work-type" id="workType">scenery</span>
+                            <h2 class="work-title" id="workTitle">Ride into Sunset</h2>
+                            <span class="work-meta" id="workMeta">A breathtaking view of sea in golden evening light.</span>
+                        </div>
+                        <div class="work-nav">
+                            <span class="work-counter"><span id="currentNum">01</span> / <span id="totalNum">12</span></span>
+                        </div>
+                    </div>
+                </main>
+
+                <!-- Navigation Controls -->
+                <div class="nav-controls">
+                    <button class="nav-btn" id="prevBtn" aria-label="Previous">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M19 12H5M5 12l7-7M5 12l7 7"/>
+                        </svg>
+                        <span>Prev</span>
+                    </button>
+                    <button class="nav-btn" id="nextBtn" aria-label="Next">
+                        <span>Next</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M5 12h14M19 12l-7-7M19 12l-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- View Project Button -->
+                <a href="#" class="view-project" id="viewProject">View Details</a>
+                
+                <!-- Progress Line -->
+                <div class="progress-line" id="progressLine"></div>
+                
+                <!-- Keyboard Hint -->
+                <div class="keyboard-hint">Use <strong>←</strong> <strong>→</strong> to navigate</div>
+            </div>
+
+            <!-- Grid View -->
+            <div class="grid-view" id="gridView">
+                <!-- Category Filter for Grid - At top of images -->
+                <nav class="grid-filter-nav">
+                    <a href="#" class="grid-filter-link active" data-category="all">All Works</a>
+                    <a href="#" class="grid-filter-link" data-category="scenery">Sceneries</a>
+                    <a href="#" class="grid-filter-link" data-category="location">Locations</a>
+                    <a href="#" class="grid-filter-link" data-category="portrait">Portraits</a>
+                </nav>
+
+                <div class="gallery-grid" id="gridGallery">
                     <!-- Gallery items will be dynamically generated -->
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination" id="pagination">
+                    <button class="page-btn" id="prevPage">← Previous</button>
+                    <button class="page-btn" id="nextPage">Next →</button>
                 </div>
             </div>
         </section>
 
         <section id="about" class="about-section">
+            <div class="about-image-wrap">
+                <img class="about-img" src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&fit=crop" alt="Artist at work" />
+                <div class="about-img-accent"></div>
+            </div>
             <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title">About the Artist</h2>
-                    <p>Welcome to my artistic journey. Through my paintings, I strive to capture the essence of the world around us - from breathtaking landscapes and iconic locations to the intimate stories told through portraits.</p>
-                    <p>Each piece is a labor of love, created with traditional techniques and a modern perspective. My work explores the interplay of light, color, and emotion to create pieces that resonate with viewers on a personal level.</p>
-                    <div class="artist-stats">
-                        <div class="stat">
-                            <span class="stat-number">50+</span>
-                            <span class="stat-label">Paintings</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">10+</span>
-                            <span class="stat-label">Exhibitions</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">5+</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
+                <div class="section-tag">The Artist</div>
+                <h2 class="section-heading">Painting the world as <em>I see it</em></h2>
+                <p class="about-body">
+                    Welcome to my artistic journey. Through my paintings, I strive to capture the essence of the world around us — from breathtaking landscapes and iconic locations to the intimate stories told through portraits.
+                </p>
+                <p class="about-body">
+                    Each piece is a labor of love, created with traditional techniques and a modern perspective. My work explores the interplay of light, color, and emotion to create pieces that resonate with viewers on a personal level.
+                </p>
+                <div class="about-sig">Supriya</div>
+                <div class="about-sig-role">Artist & Founder, Right Distractions</div>
+                <div class="about-stats">
+                    <div>
+                        <div class="stat-num">50+</div>
+                        <div class="stat-label">Paintings</div>
                     </div>
-                </div>
-                <div class="about-image">
-                   <iframe src="https://lottie.host/embed/7b838483-d975-4e73-9302-a7356e19cbc4/KSZSr32Bhe.lottie" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+                    <div>
+                        <div class="stat-num">10+</div>
+                        <div class="stat-label">Exhibitions</div>
+                    </div>
+                    <div>
+                        <div class="stat-num">5+</div>
+                        <div class="stat-label">Years</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- For Sale Ready - E-commerce Section -->
-        <section id="for-sale" class="for-sale-section">
+        <!-- Virtual Room Preview Section -->
+        <section id="virtual-room" class="virtual-room-section">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title" data-i18n="forsale.title">For Sale Ready</h2>
-                    <p class="section-subtitle" data-i18n="forsale.subtitle">Original artwork available for purchase</p>
+                    <h2 class="section-title">See It In Your Space</h2>
+                    <p class="section-subtitle">Visualize how artwork looks in your home before you buy</p>
                 </div>
-                
-                <div class="artwork-grid">
-                    <!-- Artwork Item 1 -->
-                    <div class="artwork-card">
-                        <div class="artwork-image">
-                            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600&h=600&fit=crop" alt="Golden Sunset">
-                            <span class="artwork-status available" data-i18n="forsale.available">Available</span>
+
+                <div class="virtual-room-container">
+                    <!-- Room Upload Area -->
+                    <div class="room-upload-area" id="roomUploadArea">
+                        <div class="upload-placeholder" id="uploadPlaceholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                            <p>Upload a photo of your room</p>
+                            <span>Drag & drop or click to browse</span>
+                            <input type="file" id="roomUpload" accept="image/*" hidden>
                         </div>
-                        <div class="artwork-info">
-                            <span class="artwork-id">Item #RD-2024-001</span>
-                            <h3 class="artwork-title">Golden Sunset</h3>
-                            <p class="artwork-description">Oil on canvas, 24" x 36"</p>
-                            <div class="artwork-price-row">
-                                <span class="artwork-price">₹4500</span>
-                                <a href="https://wa.me/917411990920?text=Hi!%20I'm%20interested%20in%20purchasing%20'Golden%20Sunset'.%20Can%20we%20discuss%20further?" target="_blank" class="buy-btn" data-i18n="forsale.inquire">Inquire Now</a>
+                        <div class="room-canvas-container" id="roomCanvasContainer" style="display: none;">
+                            <img id="roomImage" src="" alt="Your Room">
+                            <div class="artwork-overlay" id="artworkOverlay">
+                                <img id="previewArtwork" src="" alt="Preview Artwork">
+                                <div class="resize-handle" id="resizeHandle"></div>
+                                <div class="rotate-handle" id="rotateHandle"></div>
+                                <button class="remove-artwork" id="removeArtwork">&times;</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Artwork Item 2 -->
-                    <div class="artwork-card">
-                        <div class="artwork-image">
-                            <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=600&h=600&fit=crop" alt="Abstract Dreams">
-                            <span class="artwork-status available" data-i18n="forsale.available">Available</span>
+                    <!-- Artwork Selection Panel -->
+                    <div class="artwork-selection-panel">
+                        <h3>Select Artwork to Preview</h3>
+                        <div class="preview-artwork-grid" id="previewArtworkGrid">
+                            <!-- Artwork thumbnails will be populated here -->
                         </div>
-                        <div class="artwork-info">
-                            <span class="artwork-id">Item #RD-2024-002</span>
-                            <h3 class="artwork-title">Abstract Dreams</h3>
-                            <p class="artwork-description">Acrylic on canvas, 20" x 20"</p>
-                            <div class="artwork-price-row">
-                                <span class="artwork-price">₹3200</span>
-                                <a href="https://wa.me/917411990920?text=Hi!%20I'm%20interested%20in%20purchasing%20'Abstract%20Dreams'.%20Can%20we%20discuss%20further?" target="_blank" class="buy-btn" data-i18n="forsale.inquire">Inquire Now</a>
+                        <div class="preview-controls" id="previewControls" style="display: none;">
+                            <div class="control-group">
+                                <label>Size</label>
+                                <input type="range" id="sizeSlider" min="50" max="400" value="200">
                             </div>
+                            <div class="control-group">
+                                <label>Rotation</label>
+                                <input type="range" id="rotateSlider" min="-180" max="180" value="0">
+                            </div>
+                            <div class="control-group">
+                                <label>Opacity</label>
+                                <input type="range" id="opacitySlider" min="50" max="100" value="100">
+                            </div>
+                            <button class="reset-preview-btn" id="resetPreview">Reset Position</button>
+                            <button class="clear-room-btn" id="clearRoom">Clear Room Photo</button>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Artwork Item 3 -->
-                    <div class="artwork-card">
-                        <div class="artwork-image">
-                            <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=600&h=600&fit=crop" alt="Ocean Serenity">
-                            <span class="artwork-status sold" data-i18n="forsale.sold">Sold</span>
-                        </div>
-                        <div class="artwork-info">
-                            <span class="artwork-id">Item #RD-2024-003</span>
-                            <h3 class="artwork-title">Ocean Serenity</h3>
-                            <p class="artwork-description">Oil on canvas, 30" x 40"</p>
-                            <div class="artwork-price-row">
-                                <span class="artwork-price sold-price">₹3800</span>
-                                <button class="buy-btn" disabled data-i18n="forsale.sold">Sold</button>
-                            </div>
-                        </div>
+                <!-- Instructions -->
+                <div class="virtual-room-instructions">
+                    <div class="instruction-step">
+                        <span class="step-number">1</span>
+                        <p>Upload a photo of your wall or room</p>
                     </div>
-
-                    <!-- Artwork Item 4 -->
-                    <div class="artwork-card">
-                        <div class="artwork-image">
-                            <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=600&h=600&fit=crop" alt="Mountain Mist">
-                            <span class="artwork-status available" data-i18n="forsale.available">Available</span>
-                        </div>
-                        <div class="artwork-info">
-                            <span class="artwork-id">Item #RD-2024-004</span>
-                            <h3 class="artwork-title">Mountain Mist</h3>
-                            <p class="artwork-description">Watercolor, 18" x 24"</p>
-                            <div class="artwork-price-row">
-                                <span class="artwork-price">₹2800</span>
-                                <a href="https://wa.me/917411990920?text=Hi!%20I'm%20interested%20in%20purchasing%20'Mountain%20Mist'.%20Can%20we%20discuss%20further?" target="_blank" class="buy-btn" data-i18n="forsale.inquire">Inquire Now</a>
-                            </div>
-                        </div>
+                    <div class="instruction-step">
+                        <span class="step-number">2</span>
+                        <p>Select an artwork from our gallery</p>
                     </div>
-
-                    <!-- Artwork Item 5 -->
-                    <div class="artwork-card">
-                        <div class="artwork-image">
-                            <img src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=600&h=600&fit=crop" alt="Urban Vibes">
-                            <span class="artwork-status available" data-i18n="forsale.available">Available</span>
-                        </div>
-                        <div class="artwork-info">
-                            <span class="artwork-id">Item #RD-2024-005</span>
-                            <h3 class="artwork-title">Urban Vibes</h3>
-                            <p class="artwork-description">Mixed media, 24" x 24"</p>
-                            <div class="artwork-price-row">
-                                <span class="artwork-price">₹4200</span>
-                                <a href="https://wa.me/917411990920?text=Hi!%20I'm%20interested%20in%20purchasing%20'Urban%20Vibes'.%20Can%20we%20discuss%20further?" target="_blank" class="buy-btn" data-i18n="forsale.inquire">Inquire Now</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Artwork Item 6 -->
-                    <div class="artwork-card">
-                        <div class="artwork-image">
-                            <img src="https://images.unsplash.com/photo-1505909182942-e2f09aee3e89?w=600&h=600&fit=crop" alt="Floral Harmony">
-                            <span class="artwork-status available" data-i18n="forsale.available">Available</span>
-                        </div>
-                        <div class="artwork-info">
-                            <span class="artwork-id">Item #RD-2024-006</span>
-                            <h3 class="artwork-title">Floral Harmony</h3>
-                            <p class="artwork-description">Oil on canvas, 16" x 20"</p>
-                            <div class="artwork-price-row">
-                                <span class="artwork-price">₹2400</span>
-                                <a href="https://wa.me/917411990920?text=Hi!%20I'm%20interested%20in%20purchasing%20'Floral%20Harmony'.%20Can%20we%20discuss%20further?" target="_blank" class="buy-btn" data-i18n="forsale.inquire">Inquire Now</a>
-                            </div>
-                        </div>
+                    <div class="instruction-step">
+                        <span class="step-number">3</span>
+                        <p>Drag, resize, and rotate to position it perfectly</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="testimonials" class="testimonials-section coming-soon-section">
-            <div class="container">
-                <h2 class="section-title" data-i18n="testimonials.title">Client Testimonials</h2>
-                <div class="coming-soon-content">
-                    <div class="coming-soon-text-content">
-                        <h3 class="coming-soon-title">Coming Soon</h3>
-                        <p class="coming-soon-text">Client testimonials will be available here shortly. Stay tuned for feedback from our valued art collectors!</p>
-                    </div>
-                    <div class="coming-soon-image">
-                        <iframe src="https://lottie.host/embed/110b48ca-c9d1-4272-a52a-dbe7ae5ac6f9/Ry7KK4qLOk.lottie" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="instagram" class="instagram-section">
-            <div class="container">
-                <div class="instagram-content">
-                    <div class="instagram-info">
-                        <h2 class="section-title" data-i18n="instagram.title">Follow on Instagram</h2>
-                        <p data-i18n="instagram.description">Discover more of my artwork and behind-the-scenes content on Instagram. Follow @rightdistractions for daily inspiration and updates on new paintings.</p>
-                        <a href="https://www.instagram.com/rightdistractions/" target="_blank" class="instagram-button">
-                        
-                            <span data-i18n="instagram.button">Follow @rightdistractions</span>
-                        </a>
-                    </div>
-                    <div class="instagram-preview">
-                        <div class="instagram-grid">
-                            <div class="instagram-item">
-                                <div class="instagram-placeholder">
-                                    <span>Latest Artwork</span>
-                                </div>
-                            </div>
-                            <div class="instagram-item">
-                                <div class="instagram-placeholder">
-                                    <span>Behind the Scenes</span>
-                                </div>
-                            </div>
-                            <div class="instagram-item">
-                                <div class="instagram-placeholder">
-                                    <span>Work in Progress</span>
-                                </div>
-                            </div>
-                            <div class="instagram-item">
-                                <div class="instagram-placeholder">
-                                    <span>Studio Life</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <!-- Visual Journey - Animated Slider -->
-    <section id="visual-journey" class="visual-journey-slider">
-        <div class="slider-header">
-            <h2 class="slider-section-title">Visual Journey</h2>
-            <p class="slider-section-subtitle">Explore moments captured in art</p>
-        </div>
-        <div class="animated-slider">
-            <div class="slider-container">
-                <div class="slide active">
-                    <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200&h=800&fit=crop" alt="Colorful Expressions">
-                    <div class="slide-content">
-                        <h3 class="slide-title">Colorful Expressions</h3>
-                        <p class="slide-subtitle">Vibrant paint tubes and artistic tools</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1200&h=800&fit=crop" alt="Creative Process">
-                    <div class="slide-content">
-                        <h3 class="slide-title">Creative Process</h3>
-                        <p class="slide-subtitle">Where inspiration meets canvas</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=1200&h=800&fit=crop" alt="Artistic Tools">
-                    <div class="slide-content">
-                        <h3 class="slide-title">Artistic Tools</h3>
-                        <p class="slide-subtitle">The essentials of every painter</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=1200&h=800&fit=crop" alt="Oil Paint Magic">
-                    <div class="slide-content">
-                        <h3 class="slide-title">Oil Paint Magic</h3>
-                        <p class="slide-subtitle">Rich colors and textures</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=1200&h=800&fit=crop" alt="Watercolor Dreams">
-                    <div class="slide-content">
-                        <h3 class="slide-title">Watercolor Dreams</h3>
-                        <p class="slide-subtitle">Fluid and ethereal beauty</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/steve-johnson-Xx_d26R37E4-unsplash.jpg" alt="Brush Collection">
-                    <div class="slide-content">
-                        <h3 class="slide-title">Brush Collection</h3>
-                        <p class="slide-subtitle">Tools of the trade</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="slider-controls">
-                <button class="slider-arrow slider-prev" aria-label="Previous slide">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 18l-6-6 6-6"/>
-                    </svg>
-                </button>
-                <button class="slider-arrow slider-next" aria-label="Next slide">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 18l6-6-6-6"/>
-                    </svg>
-                </button>
-            </div>
-            
-            <div class="slider-dots">
-                <button class="dot active" data-slide="0" aria-label="Go to slide 1"></button>
-                <button class="dot" data-slide="1" aria-label="Go to slide 2"></button>
-                <button class="dot" data-slide="2" aria-label="Go to slide 3"></button>
-                <button class="dot" data-slide="3" aria-label="Go to slide 4"></button>
-                <button class="dot" data-slide="4" aria-label="Go to slide 5"></button>
-                <button class="dot" data-slide="5" aria-label="Go to slide 6"></button>
-            </div>
-            
-            <div class="slider-progress">
-                <div class="progress-fill"></div>
-            </div>
-        </div>
-    </section>
-    
     <footer class="footer">
         <p>&copy; 2026 Right Distractions. All rights reserved.</p>
     </footer>
@@ -1764,6 +1825,112 @@
 
         // Initialize
         initGallery();
+
+        // View Toggle Functionality
+        const viewBtns = document.querySelectorAll('.view-btn');
+        const carouselView = document.getElementById('carouselView');
+        const gridView = document.getElementById('gridView');
+
+        viewBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const view = btn.dataset.view;
+                
+                // Update active button
+                viewBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Switch views
+                if (view === 'carousel') {
+                    carouselView.classList.add('active');
+                    gridView.classList.remove('active');
+                } else {
+                    carouselView.classList.remove('active');
+                    gridView.classList.add('active');
+                }
+            });
+        });
+
+        // Grid Filter and Pagination
+        const ITEMS_PER_PAGE = 8; // 2 rows x 4 columns
+        let currentPage = 1;
+        let currentGridCategory = 'all';
+        let filteredGridData = [...galleryData];
+        const gridGallery = document.getElementById('gridGallery');
+        const prevPageBtn = document.getElementById('prevPage');
+        const nextPageBtn = document.getElementById('nextPage');
+        const gridFilterLinks = document.querySelectorAll('.grid-filter-link');
+
+        function updateGridPagination() {
+            const totalPages = Math.ceil(filteredGridData.length / ITEMS_PER_PAGE);
+            prevPageBtn.disabled = currentPage === 1;
+            nextPageBtn.disabled = currentPage === totalPages || totalPages === 0;
+            return totalPages;
+        }
+
+        function renderGridPage(page) {
+            const start = (page - 1) * ITEMS_PER_PAGE;
+            const end = start + ITEMS_PER_PAGE;
+            const pageItems = filteredGridData.slice(start, end);
+            
+            gridGallery.innerHTML = pageItems.map(item => `
+                <div class="gallery-item" data-id="${item.id}">
+                    <img src="${item.image}" alt="${item.title}" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text">
+                            <span>${item.category}</span>
+                            <h3>${item.title}</h3>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            updateGridPagination();
+        }
+
+        function filterGridCategory(category) {
+            currentGridCategory = category;
+            currentPage = 1;
+            
+            if (category === 'all') {
+                filteredGridData = [...galleryData];
+            } else {
+                filteredGridData = galleryData.filter(item => item.category === category);
+            }
+            
+            renderGridPage(1);
+            
+            // Update active filter link
+            gridFilterLinks.forEach(link => {
+                link.classList.toggle('active', link.dataset.category === category);
+            });
+        }
+
+        // Grid filter link clicks
+        gridFilterLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                filterGridCategory(link.dataset.category);
+            });
+        });
+
+        // Prev/Next buttons
+        prevPageBtn?.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                renderGridPage(currentPage);
+            }
+        });
+
+        nextPageBtn?.addEventListener('click', () => {
+            const totalPages = Math.ceil(filteredGridData.length / ITEMS_PER_PAGE);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderGridPage(currentPage);
+            }
+        });
+
+        // Initialize grid
+        renderGridPage(1);
     })();
     </script>
 
@@ -1773,6 +1940,18 @@
         const intro = document.getElementById('pageIntro');
         if (!intro) return;
 
+        // Check if intro was already shown in this session
+        const introShown = sessionStorage.getItem('introShown');
+
+        if (introShown) {
+            // Skip intro - remove immediately
+            intro.remove();
+            return;
+        }
+
+        // Mark intro as shown for this session
+        sessionStorage.setItem('introShown', 'true');
+
         // Fade out intro after content is ready
         window.addEventListener('load', function() {
             setTimeout(function() {
@@ -1781,8 +1960,239 @@
                 setTimeout(function() {
                     intro.remove();
                 }, 900);
-            }, 2200);
+            }, 5000);
         });
+    })();
+    </script>
+
+    <!-- Virtual Room Preview Script -->
+    <script>
+    (function() {
+        // Elements
+        const roomUploadArea = document.getElementById('roomUploadArea');
+        const uploadPlaceholder = document.getElementById('uploadPlaceholder');
+        const roomUpload = document.getElementById('roomUpload');
+        const roomCanvasContainer = document.getElementById('roomCanvasContainer');
+        const roomImage = document.getElementById('roomImage');
+        const artworkOverlay = document.getElementById('artworkOverlay');
+        const previewArtwork = document.getElementById('previewArtwork');
+        const previewArtworkGrid = document.getElementById('previewArtworkGrid');
+        const previewControls = document.getElementById('previewControls');
+        const sizeSlider = document.getElementById('sizeSlider');
+        const rotateSlider = document.getElementById('rotateSlider');
+        const opacitySlider = document.getElementById('opacitySlider');
+        const resetPreviewBtn = document.getElementById('resetPreview');
+        const clearRoomBtn = document.getElementById('clearRoom');
+        const removeArtworkBtn = document.getElementById('removeArtwork');
+        const resizeHandle = document.getElementById('resizeHandle');
+        const rotateHandle = document.getElementById('rotateHandle');
+
+        // State
+        let isDragging = false;
+        let isResizing = false;
+        let isRotating = false;
+        let startX, startY, startLeft, startTop, startWidth, startRotation;
+        let currentArtwork = null;
+        let currentRotation = 0;
+        let currentWidth = 200;
+
+        // Artwork data for preview
+        const previewArtworks = [
+            { id: 1, title: 'Ride into Sunset', image: 'https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43.jpeg', category: 'scenery' },
+            { id: 2, title: 'City Skyline', image: 'https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(1).jpeg', category: 'location' },
+            { id: 3, title: 'Clock Tower', image: 'https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.43%20(2).jpeg', category: 'portrait' },
+            { id: 4, title: 'Mountain Vista', image: 'https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.44.jpeg', category: 'scenery' },
+            { id: 5, title: 'Ocean View', image: 'https://raw.githubusercontent.com/sivadevireddy89-afk/rightdistractions.github.io/main/Images/WhatsApp%20Image%202026-03-24%20at%2011.22.44%20(1).jpeg', category: 'scenery' },
+            { id: 6, title: 'Sunset Boulevard', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=400&fit=crop', category: 'scenery' },
+            { id: 7, title: 'Desert Dunes', image: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=400&h=400&fit=crop', category: 'scenery' },
+            { id: 8, title: 'Paris Cafe', image: 'https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=400&h=400&fit=crop', category: 'location' }
+        ];
+
+        // Populate artwork grid
+        function populateArtworkGrid() {
+            previewArtworks.forEach(artwork => {
+                const item = document.createElement('div');
+                item.className = 'preview-artwork-item';
+                item.dataset.id = artwork.id;
+                item.innerHTML = `<img src="${artwork.image}" alt="${artwork.title}" loading="lazy">`;
+                item.addEventListener('click', () => selectArtwork(artwork, item));
+                previewArtworkGrid.appendChild(item);
+            });
+        }
+
+        // File upload handling
+        uploadPlaceholder.addEventListener('click', () => roomUpload.click());
+
+        roomUpload.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    roomImage.src = event.target.result;
+                    uploadPlaceholder.style.display = 'none';
+                    roomCanvasContainer.style.display = 'block';
+                    previewControls.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Drag and drop
+        uploadPlaceholder.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadPlaceholder.style.borderColor = 'var(--accent-color)';
+        });
+
+        uploadPlaceholder.addEventListener('dragleave', () => {
+            uploadPlaceholder.style.borderColor = 'var(--border-color)';
+        });
+
+        uploadPlaceholder.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadPlaceholder.style.borderColor = 'var(--border-color)';
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    roomImage.src = event.target.result;
+                    uploadPlaceholder.style.display = 'none';
+                    roomCanvasContainer.style.display = 'block';
+                    previewControls.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Select artwork
+        function selectArtwork(artwork, element) {
+            // Remove active class from all
+            document.querySelectorAll('.preview-artwork-item').forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
+
+            currentArtwork = artwork;
+            previewArtwork.src = artwork.image;
+            artworkOverlay.style.display = 'block';
+
+            // Reset position
+            resetPosition();
+        }
+
+        // Drag functionality
+        artworkOverlay.addEventListener('mousedown', (e) => {
+            if (e.target === resizeHandle || e.target === rotateHandle || e.target === removeArtworkBtn) return;
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            const rect = artworkOverlay.getBoundingClientRect();
+            const parentRect = roomCanvasContainer.getBoundingClientRect();
+            startLeft = rect.left - parentRect.left;
+            startTop = rect.top - parentRect.top;
+            e.preventDefault();
+        });
+
+        // Resize functionality
+        resizeHandle.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            startWidth = currentWidth;
+            e.preventDefault();
+            e.stopPropagation();
+        });
+
+        // Rotate functionality
+        rotateHandle.addEventListener('mousedown', (e) => {
+            isRotating = true;
+            startX = e.clientX;
+            startRotation = currentRotation;
+            e.preventDefault();
+            e.stopPropagation();
+        });
+
+        // Mouse move handler
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const parentRect = roomCanvasContainer.getBoundingClientRect();
+                const newLeft = startLeft + (e.clientX - startX);
+                const newTop = startTop + (e.clientY - startY);
+                artworkOverlay.style.left = (newLeft + artworkOverlay.offsetWidth / 2) + 'px';
+                artworkOverlay.style.top = (newTop + artworkOverlay.offsetHeight / 2) + 'px';
+                artworkOverlay.style.transform = `translate(-50%, -50%) rotate(${currentRotation}deg)`;
+            }
+
+            if (isResizing) {
+                const delta = Math.max(e.clientX - startX, e.clientY - startY);
+                currentWidth = Math.max(50, Math.min(400, startWidth + delta));
+                previewArtwork.style.width = currentWidth + 'px';
+                sizeSlider.value = currentWidth;
+            }
+
+            if (isRotating) {
+                const deltaX = e.clientX - startX;
+                currentRotation = startRotation + deltaX * 0.5;
+                rotateSlider.value = currentRotation;
+                artworkOverlay.style.transform = `translate(-50%, -50%) rotate(${currentRotation}deg)`;
+            }
+        });
+
+        // Mouse up handler
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            isResizing = false;
+            isRotating = false;
+        });
+
+        // Slider controls
+        sizeSlider.addEventListener('input', (e) => {
+            currentWidth = parseInt(e.target.value);
+            previewArtwork.style.width = currentWidth + 'px';
+        });
+
+        rotateSlider.addEventListener('input', (e) => {
+            currentRotation = parseInt(e.target.value);
+            artworkOverlay.style.transform = `translate(-50%, -50%) rotate(${currentRotation}deg)`;
+        });
+
+        opacitySlider.addEventListener('input', (e) => {
+            const opacity = e.target.value / 100;
+            previewArtwork.style.opacity = opacity;
+        });
+
+        // Reset position
+        function resetPosition() {
+            currentRotation = 0;
+            currentWidth = 200;
+            artworkOverlay.style.left = '50%';
+            artworkOverlay.style.top = '50%';
+            artworkOverlay.style.transform = 'translate(-50%, -50%)';
+            previewArtwork.style.width = '200px';
+            previewArtwork.style.opacity = '1';
+            sizeSlider.value = 200;
+            rotateSlider.value = 0;
+            opacitySlider.value = 100;
+        }
+
+        resetPreviewBtn.addEventListener('click', resetPosition);
+
+        // Clear room
+        clearRoomBtn.addEventListener('click', () => {
+            roomImage.src = '';
+            uploadPlaceholder.style.display = 'flex';
+            roomCanvasContainer.style.display = 'none';
+            previewControls.style.display = 'none';
+            artworkOverlay.style.display = 'none';
+            roomUpload.value = '';
+        });
+
+        // Remove artwork
+        removeArtworkBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            artworkOverlay.style.display = 'none';
+            document.querySelectorAll('.preview-artwork-item').forEach(item => item.classList.remove('active'));
+        });
+
+        // Initialize
+        populateArtworkGrid();
     })();
     </script>
 
